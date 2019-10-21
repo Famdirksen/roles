@@ -1,11 +1,11 @@
 <?php
 
-namespace Ultraware\Roles\Models;
+namespace Famdirksen\Roles\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Ultraware\Roles\Contracts\RoleHasRelations as RoleHasRelationsContract;
-use Ultraware\Roles\Traits\RoleHasRelations;
-use Ultraware\Roles\Traits\Slugable;
+use Famdirksen\Roles\Contracts\RoleHasRelations as RoleHasRelationsContract;
+use Famdirksen\Roles\Traits\RoleHasRelations;
+use Famdirksen\Roles\Traits\Slugable;
 
 class Role extends Model implements RoleHasRelationsContract
 {

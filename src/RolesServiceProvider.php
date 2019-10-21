@@ -1,6 +1,6 @@
 <?php
 
-namespace Ultraware\Roles;
+namespace Famdirksen\Roles;
 
 use Illuminate\Support\ServiceProvider;
 

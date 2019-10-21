@@ -1,5 +1,5 @@
 {
-    "name": "ultraware/roles",
+    "name": "famdirksen/roles",
     "description": "Powerful package for handling roles and permissions in Laravel 5.",
     "abandoned": true,
     "keywords": [
@@ -14,6 +14,9 @@
     "authors": [
         {
             "name": "Ultraware"
+        },
+        {
+            "name": "Famdirksen"
         }
     ],
     "require": {
@@ -23,7 +26,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Ultraware\\Roles\\": "src/"
+            "Famdirksen\\Roles\\": "src/"
         }
     },
     "require-dev": {
@@ -44,7 +47,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Ultraware\\Roles\\RolesServiceProvider"
+                "Famdirksen\\Roles\\RolesServiceProvider"
             ]
         }
     }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Ultraware\Roles\Traits;
+namespace Famdirksen\Roles\Traits;
 
 use Illuminate\Support\Str;
 

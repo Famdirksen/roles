@@ -1,11 +1,7 @@
-[![Build Status](https://travis-ci.org/ultraware/roles.svg?branch=master)](https://travis-ci.org/ultraware/roles)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/ultraware/roles/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/ultraware/roles/?branch=5.1)
-[![StyleCI](https://styleci.io/repos/74971525/shield?branch=master)](https://styleci.io/repos/74971525)
-[![Coverage Status](https://coveralls.io/repos/github/ultraware/roles/badge.svg?branch=master)](https://coveralls.io/github/ultraware/roles?branch=5.1)
-
-#Abandoned 
-The Roles and permissions for laraval 5 package is abandoned and will no longer be maintained by Ultraware. 
-Feel free to fork the project and submit it to packagist. We can share the url to your package on this page if you send us a message.
+[![Build Status](https://travis-ci.org/famdirksen/roles.svg?branch=master)](https://travis-ci.org/famdirksen/roles)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/famdirksen/roles/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/famdirksen/roles/?branch=5.1)
+[![StyleCI](https://styleci.io/repos/216552350/shield?branch=master)](https://styleci.io/repos/216552350)
+[![Coverage Status](https://coveralls.io/repos/github/famdirksen/roles/badge.svg?branch=master)](https://coveralls.io/github/famdirksen/roles)
 
 # Roles And Permissions For Laravel 5
 
@@ -41,7 +37,7 @@ This package is very easy to set up. There are only couple of steps.
 
 Pull this package in through Composer 
 ```
-composer require ultraware/roles
+composer require famdirksen/roles
 ```
 
 > If you are still using Laravel 5.0, you must pull in version `1.7.*`.
@@ -59,7 +55,7 @@ Add the package to your application service providers in `config/app.php` file.
     /**
      * Third Party Service Providers...
      */
-    Ultraware\Roles\RolesServiceProvider::class,
+    Famdirksen\Roles\RolesServiceProvider::class,
 
 ],
 ```
@@ -68,8 +64,8 @@ Add the package to your application service providers in `config/app.php` file.
 
 Publish the package config file and migrations to your application. Run these commands inside your terminal.
 
-    php artisan vendor:publish --provider="Ultraware\Roles\RolesServiceProvider" --tag=config
-    php artisan vendor:publish --provider="Ultraware\Roles\RolesServiceProvider" --tag=migrations
+    php artisan vendor:publish --provider="Famdirksen\Roles\RolesServiceProvider" --tag=config
+    php artisan vendor:publish --provider="Famdirksen\Roles\RolesServiceProvider" --tag=migrations
 
 And also run migrations.
 
@@ -82,7 +78,7 @@ And also run migrations.
 Include `HasRoleAndPermission` trait and also implement `HasRoleAndPermission` contract inside your `User` model.
 
 ## Migrate from bican roles
-If you migrate from bican/roles to ultraware/roles yoe need to update a few things.
+If you migrate from bican/roles to famdirksen/roles yoe need to update a few things.
 - Change all calls to `can`, `canOne` and `canAll` to `hasPermission`, `hasOnePermission`, `hasAllPermissions`.
 - Change all calls to `is`, `isOne` and `isAll` to `hasRole`, `hasOneRole`, `hasAllRoles`.
 
@@ -91,7 +87,7 @@ If you migrate from bican/roles to ultraware/roles yoe need to update a few thin
 ### Creating Roles
 
 ```php
-use Ultraware\Roles\Models\Role;
+use Famdirksen\Roles\Models\Role;
 
 $adminRole = Role::create([
     'name' => 'Admin',
@@ -184,7 +180,7 @@ if ($user->level() > 4) {
 It's very simple thanks to `Permission` model.
 
 ```php
-use Ultraware\Roles\Models\Permission;
+use Famdirksen\Roles\Models\Permission;
 
 $createUsersPermission = Permission::create([
     'name' => 'Create users',
@@ -204,7 +200,7 @@ You can attach permissions to a role or directly to a specific user (and of cour
 
 ```php
 use App\User;
-use Ultraware\Roles\Models\Role;
+use Famdirksen\Roles\Models\Role;
 
 $role = Role::find($roleId);
 $role->attachPermission($createUsersPermission); // permission attached to a role
@@ -253,7 +249,7 @@ Let's say you have an article and you want to edit it. This article belongs to a
 
 ```php
 use App\Article;
-use Ultraware\Roles\Models\Permission;
+use Famdirksen\Roles\Models\Permission;
 
 $editArticlesPermission = Permission::create([
     'name' => 'Edit articles',
@@ -320,9 +316,9 @@ protected $routeMiddleware = [
     'auth' => \App\Http\Middleware\Authenticate::class,
     'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
     'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
-    'role' => \Ultraware\Roles\Middleware\VerifyRole::class,
-    'permission' => \Ultraware\Roles\Middleware\VerifyPermission::class,
-    'level' => \Ultraware\Roles\Middleware\VerifyLevel::class,
+    'role' => \Famdirksen\Roles\Middleware\VerifyRole::class,
+    'permission' => \Famdirksen\Roles\Middleware\VerifyPermission::class,
+    'level' => \Famdirksen\Roles\Middleware\VerifyLevel::class,
 ];
 ```
 
@@ -348,7 +344,7 @@ $router->get('/example', [
 ]);
 ```
 
-It throws `\Ultraware\Roles\Exceptions\RoleDeniedException`, `\Ultraware\Roles\Exceptions\PermissionDeniedException` or `\Ultraware\Roles\Exceptions\LevelDeniedException` exceptions if it goes wrong.
+It throws `\Famdirksen\Roles\Exceptions\RoleDeniedException`, `\Famdirksen\Roles\Exceptions\PermissionDeniedException` or `\Famdirksen\Roles\Exceptions\LevelDeniedException` exceptions if it goes wrong.
 
 You can catch these exceptions inside `app/Exceptions/Handler.php` file and do whatever you want.
 
@@ -362,7 +358,7 @@ You can catch these exceptions inside `app/Exceptions/Handler.php` file and do w
  */
 public function render($request, Exception $e)
 {
-    if ($e instanceof \Ultraware\Roles\Exceptions\RoleDeniedException) {
+    if ($e instanceof \Famdirksen\Roles\Exceptions\RoleDeniedException) {
         // you can for example flash message, redirect...
         return redirect()->back();
     }
@@ -377,7 +373,7 @@ You can change connection for models, slug separator, models path and there is a
 
 ## More Information
 
-For more information, please have a look at [HasRoleAndPermission](https://github.com/ultraware/roles/blob/master/src/Contracts/HasRoleAndPermission.php) contract.
+For more information, please have a look at [HasRoleAndPermission](https://github.com/famdirksen/roles/blob/master/src/Contracts/HasRoleAndPermission.php) contract.
 
 ## License
 
