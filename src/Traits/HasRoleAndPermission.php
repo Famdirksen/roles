@@ -1,6 +1,6 @@
 <?php
 
-namespace Ultraware\Roles\Traits;
+namespace Famdirksen\Roles\Traits;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Str;
 use InvalidArgumentException;
-use Ultraware\Roles\Models\Permission;
-use Ultraware\Roles\Models\Role;
+use Famdirksen\Roles\Models\Permission;
+use Famdirksen\Roles\Models\Role;
 
 trait HasRoleAndPermission
 {
@@ -157,7 +157,7 @@ trait HasRoleAndPermission
     /**
      * Sync roles for a user.
      *
-     * @param array|\Ultraware\Roles\Models\Role[]|\Illuminate\Database\Eloquent\Collection $roles
+     * @param array|\Famdirksen\Roles\Models\Role[]|\Illuminate\Database\Eloquent\Collection $roles
      * @return array
      */
     public function syncRoles($roles)
@@ -371,7 +371,7 @@ trait HasRoleAndPermission
     /**
      * Sync permissions for a user.
      *
-     * @param array|\Ultraware\Roles\Models\Permission[]|\Illuminate\Database\Eloquent\Collection $permissions
+     * @param array|\Famdirksen\Roles\Models\Permission[]|\Illuminate\Database\Eloquent\Collection $permissions
      * @return array
      */
     public function syncPermissions($permissions)

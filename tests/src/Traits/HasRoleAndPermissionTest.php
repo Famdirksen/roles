@@ -2,12 +2,12 @@
 
 use App\User;
 use Illuminate\Database\Eloquent\Collection;
-use Ultraware\Roles\Models\Permission;
-use Ultraware\Roles\Models\Role;
+use Famdirksen\Roles\Models\Permission;
+use Famdirksen\Roles\Models\Role;
 
 class HasRoleAndPermissionTest extends \TestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
         $this->withFactories(__DIR__ . '/../../database/factories');

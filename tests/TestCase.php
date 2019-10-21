@@ -5,14 +5,14 @@ use Orchestra\Testbench\TestCase as TestBenchTestCase;
 
 class TestCase extends TestBenchTestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
     }
 
     protected function getPackageProviders($app)
     {
-        return [Ultraware\Roles\RolesServiceProvider::class, TestMigrationsServiceProvider::class];
+        return [Famdirksen\Roles\RolesServiceProvider::class, TestMigrationsServiceProvider::class];
     }
 
     /**
